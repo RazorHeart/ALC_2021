@@ -21,7 +21,7 @@ public class GameManager : MonoBehaviour
         //player unlocks the door and exits the room
         if(hasKey && !isdoorlocked )
             {
-                print("Door Unlocked");
+                print("Left Room");
             }
     }
 }
