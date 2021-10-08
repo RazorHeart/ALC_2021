@@ -715,9 +715,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 10
   jumpForce: 0
-  lookSensitivity: 0
+  lookSensitivity: 5
+  minLookX: 0
   maxLookX: 0
-  maxLookY: 0
 --- !u!1 &2085275503
 GameObject:
   m_ObjectHideFlags: 0
@@ -806,13 +806,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2085275503}
-  m_LocalRotation: {x: -0, y: -0.08206968, z: -0, w: 0.9966266}
+  m_LocalRotation: {x: -0.032933302, y: -0.0953723, z: -0.002267886, w: 0.9948942}
   m_LocalPosition: {x: 0.528, y: -0.34800005, z: 0.685}
   m_LocalScale: {x: 0.09910402, y: 0.19751, z: 1}
   m_Children: []
   m_Father: {fileID: 963194228}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: -9.415, z: 0}
+  m_LocalEulerAnglesHint: {x: -3.782, y: -10.955, z: 0.102}
 --- !u!1 &2144999728
 GameObject:
   m_ObjectHideFlags: 0
