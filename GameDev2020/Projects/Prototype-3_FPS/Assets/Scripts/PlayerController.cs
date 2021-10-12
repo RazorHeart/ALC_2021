@@ -17,7 +17,7 @@ public class PlayerController : MonoBehaviour
     private Rigidbody rb;
 
     //first thing to be done
-    void awake()
+    void Awake()
     {   
         //get the components
         cam = Camera.main;
@@ -40,7 +40,7 @@ public class PlayerController : MonoBehaviour
         //applyling movement
         Vector3 dir = transform.right * x + transform.forward * z;
         //jump direction
-        dir = rb.velocity.y;
+        dir.y = rb.velocity.y;
         //apply direction to camera movement
         rb.velocity = dir;
     }
