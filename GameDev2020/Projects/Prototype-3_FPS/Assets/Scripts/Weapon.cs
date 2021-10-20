@@ -39,6 +39,17 @@ public class Weapon : MonoBehaviour
 
     }
 
+    public void Shoot()
+    {
+        lastShootTime = Time.time;
+        curAmmo --;
+
+        GameObject bullet = Instantiate(bulletProjectile, muzzle.position, muzzle.rotation);
+
+        //Set Velocity of bulletprojectile
+        bullet.GetComponent<Rigidbody>().velocity = muzzle.forward * bulletSpeed;
+    }
+
     // Start is called before the first frame update
     void Start()
     {
