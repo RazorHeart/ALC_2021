@@ -763,7 +763,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletProjectile: {fileID: 1370314482922194239, guid: 0ef6c3ad8b41f417bbe0b6a059ba83bf, type: 3}
   muzzle: {fileID: 124301434}
-  curAmmo: 0
+  curAmmo: 20
   maxAmmo: 20
   infiniteAmmo: 0
   bulletSpeed: 10
