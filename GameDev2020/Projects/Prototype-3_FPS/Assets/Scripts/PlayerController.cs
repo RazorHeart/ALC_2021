@@ -4,10 +4,16 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    //move variables
+    [Header("Stats")]
+    public int currentHP;
+
+    public int maxHP;
+
+    [Header("Movement")] 
     public float moveSpeed;
     public float jumpForce;
     //camera, the names are self explanitory
+    [Header("CamControls")]
     public float lookSensitivity;
     public float minLookX;
     public float maxLookX;
@@ -25,6 +31,9 @@ public class PlayerController : MonoBehaviour
         cam = Camera.main;
         rb = GetComponent<Rigidbody>();
         weapon = GetComponent<Weapon>();
+
+        Cursor.lockState = CursorLockMode.Locked;
+        
     }
 
     // Update is called once per frame
@@ -39,7 +48,7 @@ public class PlayerController : MonoBehaviour
         {   
             if(weapon.CanShoot())
             {
-               // weapon.Shoot();
+                weapon.Shoot();
             }
         }
     }
@@ -80,6 +89,18 @@ public class PlayerController : MonoBehaviour
         transform.eulerAngles += Vector3.up * y;
 
 
+    }
+    public void TakeDamage(int damage)
+    {
+        currentHP -= damage;
+        
+        if(currentHP <= 0)
+            Die();
+    }
+
+    void Die()
+    {
+        print("you die now");
     }
 
 }
