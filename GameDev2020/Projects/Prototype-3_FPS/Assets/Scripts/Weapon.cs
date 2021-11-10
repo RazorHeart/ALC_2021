@@ -5,7 +5,7 @@ using UnityEngine;
 public class Weapon : MonoBehaviour
 {
 
-    public GameObject bulletProjectile;
+    public ObjectPooling bulletPool;
     public Transform muzzle;
 
     public int curAmmo;
@@ -39,12 +39,16 @@ public class Weapon : MonoBehaviour
 
     }
 
+    //grabs bullet from the bullet pool created by Objectpooling script
     public void Shoot()
     {
         lastShootTime = Time.time;
         curAmmo --;
 
-        GameObject bullet = Instantiate(bulletProjectile, muzzle.position, muzzle.rotation);
+        GameObject bullet = bulletPool.GetObject();
+        bullet.transform.position = muzzle.position;
+        bullet.transform.rotation = muzzle.rotation;
+
 
         //Set Velocity of bulletprojectile
         bullet.GetComponent<Rigidbody>().velocity = muzzle.forward * bulletSpeed;
