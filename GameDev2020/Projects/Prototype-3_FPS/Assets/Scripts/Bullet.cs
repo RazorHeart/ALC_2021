@@ -31,4 +31,18 @@ public class Bullet : MonoBehaviour
         
 
     }
+
+   // did we hit the player? or did we hit the enemy
+     void OnTriggerEnter(Collider other)
+    {
+        if(other.CompareTag("Player"))
+            other.GetComponent<PlayerController>().TakeDamage(damage);
+        //Swap the player controller for the enemy
+        else if(other.CompareTag("Enemy"))
+            other.GetComponent<PlayerController>().TakeDamage(damage);
+        
+        //disable the bullet
+        gameObject.SetActive(false); 
+    }
+
 }

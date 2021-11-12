@@ -146,13 +146,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 124301433}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0, y: -0, z: 0.5943}
+  m_LocalRotation: {x: -0, y: 0.036866352, z: -0.000000003026798, w: 0.99932027}
+  m_LocalPosition: {x: 0, y: 0.00000039608673, z: 0.72999996}
   m_LocalScale: {x: 0.83295, y: 0.83295, z: 0.83295}
   m_Children: []
   m_Father: {fileID: 2085275507}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 4.226, z: 0}
 --- !u!1 &126403082
 GameObject:
   m_ObjectHideFlags: 0
@@ -166,7 +166,7 @@ GameObject:
   - component: {fileID: 126403084}
   - component: {fileID: 126403083}
   m_Layer: 0
-  m_Name: Sphere
+  m_Name: Enemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -260,8 +260,9 @@ GameObject:
   - component: {fileID: 674545509}
   - component: {fileID: 674545508}
   - component: {fileID: 674545507}
+  - component: {fileID: 674545511}
   m_Layer: 0
-  m_Name: Cylinder
+  m_Name: Ammo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -338,12 +339,25 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 674545506}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.15, y: 2.07, z: -0.18434584}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 3.15, y: 1.737, z: -0.18435}
+  m_LocalScale: {x: 0.27471, y: 0.27471, z: 0.27471}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!135 &674545511
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 674545506}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 1.5
+  m_Center: {x: 0.00000005960464, y: 0, z: -0.00000008940696}
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -533,8 +547,9 @@ GameObject:
   - component: {fileID: 1890845625}
   - component: {fileID: 1890845624}
   - component: {fileID: 1890845623}
+  - component: {fileID: 1890845627}
   m_Layer: 0
-  m_Name: Cube (1)
+  m_Name: Health
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -610,12 +625,25 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1890845622}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.2026234, y: 1.72, z: -0.18434584}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -4.2026234, y: 1.61, z: -0.18434584}
+  m_LocalScale: {x: 0.67, y: 0.67, z: 0.67}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!135 &1890845627
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1890845622}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 1.5
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1995377160
 GameObject:
   m_ObjectHideFlags: 0
@@ -631,9 +659,10 @@ GameObject:
   - component: {fileID: 1995377161}
   - component: {fileID: 1995377166}
   - component: {fileID: 1995377167}
+  - component: {fileID: 1995377168}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -744,6 +773,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c149e66cdc79474a8b00a6a8bb2ecef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentHP: 0
+  maxHP: 0
   moveSpeed: 10
   jumpForce: 5
   lookSensitivity: 5
@@ -761,14 +792,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7bd3cd772e51a49fb93e48789420255f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletProjectile: {fileID: 1370314482922194239, guid: 0ef6c3ad8b41f417bbe0b6a059ba83bf, type: 3}
+  bulletPool: {fileID: 1995377168}
   muzzle: {fileID: 124301434}
   curAmmo: 20
   maxAmmo: 20
   infiniteAmmo: 0
-  bulletSpeed: 10
+  bulletSpeed: 25
   shootRate: 0.5
   lastShootTime: 0
+--- !u!114 &1995377168
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1995377160}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 168abd21195a84a30a0dad179cd0bc48, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objPrefab: {fileID: 1370314482922194239, guid: 0ef6c3ad8b41f417bbe0b6a059ba83bf, type: 3}
+  createOnStart: 10
 --- !u!1 &2085275503
 GameObject:
   m_ObjectHideFlags: 0
