@@ -36,6 +36,8 @@ public class PlayerController : MonoBehaviour
         
     }
 
+    
+
     // Update is called once per frame
     void Update()
     {
@@ -75,7 +77,15 @@ public class PlayerController : MonoBehaviour
 
     }
 
+    public void GiveHealth(int amountToGive)
+    {
+        currentHP = Mathf.Clamp(currentHP + amountToGive, 0, maxHP);
+    }
 
+    public void GiveAmmo(int amountToGive)
+    {
+        weapon.curAmmo = Mathf.Clamp(weapon.curAmmo + amountToGive, 0, weapon.maxAmmo);
+    }
 
     void CamLook()
     {

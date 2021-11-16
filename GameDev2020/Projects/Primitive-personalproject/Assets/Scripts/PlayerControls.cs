@@ -8,6 +8,7 @@ public class PlayerControls : MonoBehaviour
     public float moveSpeed;
     public float jumpForce;
     public float hInput;
+    private Rigidbody rigidbody;
 
     // Start is called before the first frame update
     void Start()
