@@ -28,10 +28,10 @@ public class PlayerControls : MonoBehaviour
     void Jump()
     {   
         // cast ray to ground
-        Ray ray = new Ray(transform.position, Vector3.down);
+        //Ray ray = new Ray(transform.position, Vector3.down);
         //checks ray to determine if on the ground
-        if(Physics.Raycast(ray, 1.1f))
-            rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+        //if(Physics.Raycast(ray, 1.1f))
+        //    rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
 
     }
 
