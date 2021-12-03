@@ -41,13 +41,20 @@ public class Enemy : MonoBehaviour
 
     void ChaseTarget()
     {
-        if(path.Count ==0)
+        if(path.Count == 0)
             return;
 
         transform.position = Vector3.MoveTowards(transform.position, path[0] + new Vector3(0, yPathOffset, 0), moveSpeed * Time.deltaTime);
 
         if(transform.position == path[0] + new Vector3(0, yPathOffset, 0))
             path.RemoveAt(0);
+    }
+
+    public void TakeDamage(int damage)
+    {
+        currentHP -= damage;
+        if(currentHP <= 0)
+            Die();
     }
 
     // Update is called once per frame
