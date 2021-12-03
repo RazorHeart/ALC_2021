@@ -32,16 +32,20 @@ public class Pickup : MonoBehaviour
 
     void OnTriggerEnter(Collider other)    
     {
-        PlayerController player = other.GetComponent<PlayerController>();
-
-        switch(type)
+        if(other.CompareTag("Player"))
         {
-            case PickType.Health:
+            PlayerController player = other.GetComponent<PlayerController>();
+
+            switch(type)
+            {
+                case PickType.Health:
                 player.GiveHealth(value);
                 break;
-            case PickType.Ammo:
+                
+                case PickType.Ammo:
                 player.GiveAmmo(value);
                 break;
+            }
         }
 
         Destroy(gameObject);
@@ -54,6 +58,7 @@ public class Pickup : MonoBehaviour
 
         //bob up and down
         Vector3 offset = (bobbingUp == true ? new Vector3(0, bobHeight / 2, 0) : new Vector3(0, -bobHeight /2, 0));
+        transform.position = Vector3.MoveTowards(transform.position, startPos + offset, bobSpeed * Time.deltaTime);
 
         if(transform.position == startPos + offset)
             bobbingUp = !bobbingUp;
