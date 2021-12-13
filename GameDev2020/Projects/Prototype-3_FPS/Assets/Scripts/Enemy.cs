@@ -56,7 +56,10 @@ public class Enemy : MonoBehaviour
         if(currentHP <= 0)
             Die();
     }
-
+    void Die()
+    {
+        
+    }
     // Update is called once per frame
     void Update()
     {

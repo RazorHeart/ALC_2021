@@ -268,8 +268,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 10
-  jumpForce: 0
-  hInput: 0
+  jumpForce: 5
+  moveSpeedInAir: 5
+  originalMoveSpeed: 10
+  groundCheck: {fileID: 1948059832}
+  groundCheckRadius: 0.01
+  whatIsGround:
+    serializedVersion: 2
+    m_Bits: 8
+  animator: {fileID: 0}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -463,7 +470,7 @@ GameObject:
   - component: {fileID: 667937137}
   - component: {fileID: 667937136}
   - component: {fileID: 667937138}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Square (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -572,7 +579,7 @@ GameObject:
   - component: {fileID: 710786489}
   - component: {fileID: 710786488}
   - component: {fileID: 710786490}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Square (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -763,7 +770,7 @@ GameObject:
   - component: {fileID: 1277488538}
   - component: {fileID: 1277488537}
   - component: {fileID: 1277488539}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Square
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -952,7 +959,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1587969720}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Stairs
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -989,7 +996,7 @@ GameObject:
   - component: {fileID: 1948059831}
   - component: {fileID: 1948059830}
   - component: {fileID: 1948059829}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Floor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1096,7 +1103,7 @@ GameObject:
   - component: {fileID: 2070149520}
   - component: {fileID: 2070149519}
   - component: {fileID: 2070149521}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Square (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -7,6 +7,8 @@ public class PlayerControls : MonoBehaviour
     //player movement
     public float moveSpeed;
     public float jumpForce;
+    public float moveSpeedInAir;
+    public float originalMoveSpeed;
     //ground check
     public Transform groundCheck;
     public float groundCheckRadius;
@@ -21,9 +23,11 @@ public class PlayerControls : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        originalMoveSpeed = moveSpeed;
         //also for animation
         animator.SetBool("isWalking", false);
         animator.SetBool("isJumping", false);
+
     }
 
     void FixedUpdate()
@@ -41,31 +45,40 @@ public class PlayerControls : MonoBehaviour
 
         moveVelocity = 0f;
 
+        if(grounded == false)
+            {
+                moveSpeed = moveSpeedInAir;
+            }
+        if(grounded == true)
+            {
+                moveSpeed = originalMoveSpeed;
+            }
+
         if(Input.GetKey (KeyCode.D))
             {
                 moveVelocity = moveSpeed;
-                animator.SetBool("isWalking", true);
+                //animator.SetBool("isWalking", true);
             }
         else if (Input.GetKeyUp(KeyCode.D))
             {
-                animator.SetBool("isWalking", false);
+                //animator.SetBool("isWalking", false);
             }
         if(Input.GetKey (KeyCode.A))
             {
                 moveVelocity = -moveSpeed;
-                animator.SetBool("isWalking", true);
+                //animator.SetBool("isWalking", true);
             }
         else if (Input.GetKeyUp(KeyCode.A))
             {
-                animator.SetBool("isWalking", false);
+                //animator.SetBool("isWalking", false);
             }
-        GetComponent<Rigidbody2D>().velocity = new Vector2(moveVelocity, GetComponent<RigidBody2D>().velocity.y);
+        GetComponent<Rigidbody2D>().velocity = new Vector2(moveVelocity, GetComponent<Rigidbody2D>().velocity.y);
     }
 
     public void Jump()
     {   
-        GetComponent<RigidBody2D>().velocity = new Vector2(GetComponent<RigidBody2D>().velocity.x, jumpForce);
-        animator.SetBool("isJumping",true);
+        GetComponent<Rigidbody2D>().velocity = new Vector2(GetComponent<Rigidbody2D>().velocity.x, jumpForce);
+        //animator.SetBool("isJumping",true);
     }
 
 }
