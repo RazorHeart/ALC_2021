@@ -29,9 +29,50 @@ public class GameUI : MonoBehaviour
         instance = this;
     }
 
-    // Update is called once per frame
-    void Update()
+    
+    public void UpdateHealthBar(int curHP, int maxHP)
     {
-        
+        healthBarFill.fillAmount = (float)curHP / (float)maxHP;
     }
+
+    public void UpdateScoreText(int score)
+    {
+        //scoreText = " Score: " + score;
+    }
+
+    public void UpdateAmmoText(int curAmmo, int maxAmmo)
+    {
+        ammoText.text = "Ammo; " + curAmmo + " / " + maxAmmo;
+    }
+
+    public void TogglePauseMenu(bool paused)
+    {
+        pauseMenu.SetActive(paused);
+    }
+    
+    public void SetEndGameScreen(bool won, int score)
+    {
+        endGameScreen.SetActive(true);
+        endGameHeaderText.text = won == true ? "You Win!" : "You Lost.";
+        endGameHeaderText.color = won == true ? Color.green : Color.red;
+        endGameScoreText.text = "<b>Score</b>/n" + score;
+    }
+
+    public void OnResumeButton()
+    {
+        //GameManager.instance.TogglePauseMenu();
+    }
+
+    public void OnRestartButton()
+    {
+        SceneManager.LoadScene("Game");
+    }
+
+    public void OnMenuButton()
+    {
+        SceneManager.LoadScene("Menu");
+    }
+
+
+
 }
