@@ -24,7 +24,16 @@ public class PlayerController : MonoBehaviour
 
     private Weapon weapon;
 
+    
+    void Start()
+    {
+        GameUI.instance.UpdateHealthBar(currentHP, maxHP);
+        GameUI.instance.UpdateScoreText(0);
+        GameUI.instance.UpdateAmmoText(weapon.curAmmo, weapon.maxAmmo);
+    }
+    
     //first thing to be done
+    
     void Awake()
     {   
         //get the components
@@ -41,6 +50,9 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(GameManager.instance.gamePaused == true)
+            return;
+
         Move();
         CamLook();
         if(Input.GetButtonDown("Jump"))
@@ -86,7 +98,7 @@ public class PlayerController : MonoBehaviour
     public void GiveAmmo(int amountToGive)
     {
         weapon.curAmmo = Mathf.Clamp(weapon.curAmmo + amountToGive, 0, weapon.maxAmmo);
-        GameUI.instance.UpdateAmmoText(curAmmo, maxAmmo);
+        GameUI.instance.UpdateAmmoText(weapon.curAmmo, weapon.maxAmmo);
     }
 
     void CamLook()
@@ -112,7 +124,7 @@ public class PlayerController : MonoBehaviour
 
     void Die()
     {
-        print("you die now");
+        GameManager.instance.LoseGame();
     }
 
 }

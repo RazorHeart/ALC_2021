@@ -1259,7 +1259,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scoreText: {fileID: 0}
   ammoText: {fileID: 0}
-  healthBarFill: {fileID: 0}
+  healthBarFill: {fileID: 448950685}
   pauseMenu: {fileID: 0}
   endGameScreen: {fileID: 0}
   endGameHeaderText: {fileID: 0}
@@ -1290,6 +1290,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53a2d7ccce0154d9786acfe53df2ac87, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  scoreToWin: 0
+  curScore: 0
+  gamePaused: 0
 --- !u!1 &1064408175
 GameObject:
   m_ObjectHideFlags: 0

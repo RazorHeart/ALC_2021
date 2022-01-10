@@ -37,7 +37,7 @@ public class GameUI : MonoBehaviour
 
     public void UpdateScoreText(int score)
     {
-        //scoreText = " Score: " + score;
+        scoreText.text = " Score: " + score;
     }
 
     public void UpdateAmmoText(int curAmmo, int maxAmmo)
@@ -50,7 +50,7 @@ public class GameUI : MonoBehaviour
         pauseMenu.SetActive(paused);
     }
     
-    public void SetEndGameScreen(bool won, int score)
+    public void GetEndGameScreen(bool won, int score)
     {
         endGameScreen.SetActive(true);
         endGameHeaderText.text = won == true ? "You Win!" : "You Lost.";
@@ -60,7 +60,7 @@ public class GameUI : MonoBehaviour
 
     public void OnResumeButton()
     {
-        //GameManager.instance.TogglePauseMenu();
+        GameManager.instance.TogglePauseGame();
     }
 
     public void OnRestartButton()
