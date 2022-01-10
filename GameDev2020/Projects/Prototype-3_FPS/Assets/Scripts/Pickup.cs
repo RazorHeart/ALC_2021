@@ -20,6 +20,7 @@ public class Pickup : MonoBehaviour
     public float rotationSpeed;
     public float bobSpeed;
     public float bobHeight;
+    public AudioClip pickupSfx;
 
     private Vector3 startPos;
     private bool bobbingUp;
@@ -47,7 +48,7 @@ public class Pickup : MonoBehaviour
                 break;
             }
         }
-
+        other.GetComponent<AudioSource>().PlayOneShot(pickupSfx);
         Destroy(gameObject);
     }
     // Update is called once per frame
