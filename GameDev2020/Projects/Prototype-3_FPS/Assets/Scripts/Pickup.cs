@@ -21,16 +21,22 @@ public class Pickup : MonoBehaviour
     public float bobSpeed;
     public float bobHeight;
     public AudioClip pickupSfx;
-
+    public AudioSource audioSource;
     private Vector3 startPos;
     private bool bobbingUp;
+
+
 
     // Start is called before the first frame update
     void Start()
     {
         startPos = transform.position;
     }
-
+    
+    void Awake()
+    {
+        audioSource = GetComponent<AudioSource>();
+    }
     void OnTriggerEnter(Collider other)    
     {
         if(other.CompareTag("Player"))

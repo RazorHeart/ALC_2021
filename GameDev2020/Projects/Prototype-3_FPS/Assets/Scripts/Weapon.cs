@@ -15,13 +15,16 @@ public class Weapon : MonoBehaviour
     public float shootRate;
     public float lastShootTime;
     private bool isPlayer;
-
+    public AudioClip shootSfx;
+    public AudioSource audioSource;
     void Awake()
     {
         if(GetComponent<PlayerController>())
         {
             isPlayer = true;
+            
         }
+        audioSource = GetComponent<AudioSource>();
     }
 
     //Can we shoot?
@@ -42,6 +45,7 @@ public class Weapon : MonoBehaviour
     //grabs bullet from the bullet pool created by Objectpooling script
     public void Shoot()
     {
+        audioSource.PlayOneShot(shootSfx);
         lastShootTime = Time.time;
         curAmmo --;
 
@@ -54,6 +58,7 @@ public class Weapon : MonoBehaviour
         bullet.GetComponent<Rigidbody>().velocity = muzzle.forward * bulletSpeed;
         if(isPlayer)
             GameUI.instance.UpdateAmmoText(curAmmo, maxAmmo);
+
     }
 
     // Start is called before the first frame update
